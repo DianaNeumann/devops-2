@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mynginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mynginx:latest
+    container_name: mynginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./html:/usr/share/nginx/html:ro
+    user: "nginx"
